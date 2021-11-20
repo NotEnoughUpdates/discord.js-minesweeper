@@ -1,7 +1,7 @@
 .vscode
 .DS_Store
 node_modules
-/lib
+/dist
 /.nyc_output
 coverage
 *.log

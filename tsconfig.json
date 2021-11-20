@@ -1,17 +1,22 @@
 {
-  "compilerOptions": {
-    "target": "ES2021",
-    "module": "commonjs",
-    "outDir": "./lib",
-    "rootDirs": [ "./src" ],
-    "declaration": true,
-    "declarationMap": true,    
-    "sourceMap": true,
-    "forceConsistentCasingInFileNames": true,
-    "importHelpers": true,
-    "strict": true,
-  },
-  "include": [
-    "./src/**/*"
-  ]
+	"compilerOptions": {
+		"module": "CommonJS",
+		"target": "ES2021",
+		"outDir": "dist",
+		"forceConsistentCasingInFileNames": true,
+		"esModuleInterop": true,
+		"resolveJsonModule": true,
+		"noErrorTruncation": true,
+		"useUnknownInCatchVariables": false,
+		"alwaysStrict": true,
+		"strict": true,
+		"noImplicitOverride": true,
+		"declarationMap": true,
+		"declaration": true,
+		"sourceMap": true,
+		"noEmitHelpers": true,
+		"importHelpers": true
+	},
+	"include": ["src/**/*.ts"],
+	"exclude": ["node_modules", "dist"]
 }

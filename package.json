@@ -1,43 +1,57 @@
 {
-  "name": "@notenoughupdates/discord.js-minesweeper",
-  "version": "1.0.7",
-  "description": "Generate Minesweeper mine fields using Discord's spoiler tags.",
-  "main": "./lib/Minesweeper.js",
-  "types": "lib/Minesweeper.d.ts",
-  "repository": "jozsefsallai/discord.js-minesweeper",
-  "bugs": "https://github.com/jozsefsallai/discord.js-minesweeper/issues",
-  "author": "József Sallai @jozsefsallai",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/node": "^16.11.7",
-    "@types/source-map-support": "^0.5.4",
-    "@typescript-eslint/eslint-plugin": "^5.3.1",
-    "@typescript-eslint/parser": "^5.3.1",
-    "eslint": "^8.2.0",
-    "rimraf": "^3.0.2",
-    "typescript": "^4.4.4"
-  },
-  "dependencies": {
-    "source-map-support": "^0.5.20"
-  },
-  "engines": {
-    "node": ">=16.0.0"
-  },
-  "files": [
-    "/lib"
-  ],
-  "homepage": "https://github.com/jozsefsallai/discord.js-minesweeper",
-  "keywords": [
-    "discord",
-    "discord.js",
-    "minesweeper",
-    "bot",
-    "discord bot",
-    "generator"
-  ],
-  "scripts": {
-    "lint": "tslint --project .",
-    "prepack": "yarn rimraf lib && yarn tsc",
-    "prepare": "yarn rimraf lib && yarn tsc"
-  }
+	"name": "@notenoughupdates/discord.js-minesweeper",
+	"version": "1.0.8",
+	"description": "Generate Minesweeper mine fields using Discord's spoiler tags.",
+	"main": "./dist/Minesweeper.js",
+	"types": "./dist/Minesweeper.d.ts",
+	"repository": "jozsefsallai/discord.js-minesweeper",
+	"bugs": "https://github.com/jozsefsallai/discord.js-minesweeper/issues",
+	"author": "József Sallai @jozsefsallai",
+	"license": "MIT",
+	"devDependencies": {
+		"@types/node": "^16.11.9",
+		"@types/source-map-support": "^0.5.4",
+		"@typescript-eslint/eslint-plugin": "^5.4.0",
+		"@typescript-eslint/parser": "^5.4.0",
+		"eslint": "^8.2.0",
+		"prettier": "^2.4.1",
+		"rimraf": "^3.0.2",
+		"tslib": "^2.3.1",
+		"typescript": "^4.5.2"
+	},
+	"dependencies": {
+		"source-map-support": "^0.5.20"
+	},
+	"peerDependencies": {
+		"tslib": ">=2.3.1"
+	},
+	"engines": {
+		"node": ">=16.0.0"
+	},
+	"files": [
+		"/dist",
+		"/src"
+	],
+	"homepage": "https://github.com/jozsefsallai/discord.js-minesweeper",
+	"keywords": [
+		"discord",
+		"discord.js",
+		"minesweeper",
+		"bot",
+		"discord bot",
+		"generator"
+	],
+	"scripts": {
+		"lint": "tslint --project .",
+		"prepack": "yarn rimraf lib && yarn tsc",
+		"prepare": "yarn rimraf lib && yarn tsc",
+		"format": "yarn prettier . --write",
+		"build": "yarn rimraf dist && yarn tsc"
+	},
+	"prettier": {
+		"useTabs": true,
+		"trailingComma": "none",
+		"arrowParens": "always",
+		"printWidth": 120
+	}
 }
