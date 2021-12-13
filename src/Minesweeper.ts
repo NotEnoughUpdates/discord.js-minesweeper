@@ -75,7 +75,7 @@ export interface SafeCell {
 	y: number;
 }
 
-export default class Minesweeper {
+export class Minesweeper {
 	public readonly rows: number;
 	public readonly columns: number;
 	public readonly mines: number;
@@ -298,3 +298,5 @@ export default class Minesweeper {
 		}
 	}
 }
+
+export default Minesweeper;

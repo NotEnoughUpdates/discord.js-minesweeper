@@ -13,9 +13,7 @@
 		"noImplicitOverride": true,
 		"declarationMap": true,
 		"declaration": true,
-		"sourceMap": true,
-		"noEmitHelpers": true,
-		"importHelpers": true
+		"sourceMap": true
 	},
 	"include": ["src/**/*.ts"],
 	"exclude": ["node_modules", "dist"]
