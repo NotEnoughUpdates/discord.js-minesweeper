@@ -1,46 +1,53 @@
-import "source-map-support/register.js";
-
 /**
  * Minesweeper options.
  */
 export interface MinesweeperOpts {
 	/**
-	 * The number of rows in the mine field. Defaults to `9`.
+	 * The number of rows in the mine field.
+	 * @default 9
 	 */
 	rows?: number;
 
 	/**
-	 * The number of columns in the mine field. Defaults to `9`.
+	 * The number of columns in the mine field.
+	 * @default 9
 	 */
 	columns?: number;
 
 	/**
-	 * The number of mines in the mine field. Defaults to `10`.
+	 * The number of mines in the mine field.
+	 * @default 10
 	 */
 	mines?: number;
 
 	/**
-	 * The emote used as a mine. Defaults to `"boom"`.
+	 * The emote used as a mine.
+	 * @default "boom"
 	 */
 	emote?: string;
 
 	/**
-	 * Whether or not the first cell should be revealed (like in regular Minesweeper). Defaults to `false`.
+	 * Whether or not the first cell should be revealed (like in regular Minesweeper).
+	 * @default false
 	 */
 	revealFirstCell?: boolean;
 
 	/**
-	 * Whether or not the first cell revealed should always be a zero (and automatically reveal any surrounding safe cells). Does nothing if `revealFirstCell` is false. Defaults to `true`.
+	 * Whether or not the first cell revealed should always be a zero (and automatically reveal any surrounding safe cells).
+	 * Does nothing if `revealFirstCell` is false.
+	 * @default true
 	 */
 	zeroFirstCell?: boolean;
 
 	/**
-	 * Specifies whether or not the emojis should be surrounded by spaces. Defaults to `true`.
+	 * Specifies whether or not the emojis should be surrounded by spaces.
+	 * @default true
 	 */
 	spaces?: boolean;
 
 	/**
-	 * The type of the returned data. Defaults to `"emoji"`.
+	 * The type of the returned data.
+	 * @default "emoji"
 	 */
 	returnType?: "emoji" | "code" | "matrix";
 }
