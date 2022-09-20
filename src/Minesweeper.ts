@@ -46,6 +46,13 @@ export interface MinesweeperOpts {
 	spaces?: boolean;
 
 	/**
+	 * Custom random number generator function. Must generate a number between 0 and 1.
+	 * @default Math.random
+	 */
+	rng?: () => number;
+
+
+	/**
 	 * The type of the returned data.
 	 * @default "emoji"
 	 */
@@ -90,8 +97,11 @@ export class Minesweeper {
 	public readonly spaces: boolean;
 	public readonly revealFirstCell: boolean;
 	public readonly zeroFirstCell: boolean;
-	public readonly safeCells: SafeCell[] = [];
 	public readonly returnType: "emoji" | "code" | "matrix";
+
+	public rng: () => number;
+
+	public readonly safeCells: SafeCell[] = [];
 	public readonly types: CellTypes;
 	public matrix: string[][];
 
@@ -101,14 +111,14 @@ export class Minesweeper {
 	 * @param opts - The options of the Minesweeper class.
 	 */
 	public constructor(opts: MinesweeperOpts | undefined = undefined) {
-		this.rows = (opts && opts.rows) || 9;
-		this.columns = (opts && opts.columns) || 9;
-		this.mines = (opts && opts.mines) || 10;
-		this.emote = (opts && opts.emote) || "boom";
-		this.revealFirstCell = opts && opts.revealFirstCell !== undefined ? opts.revealFirstCell : false;
-		this.zeroFirstCell = opts && opts.zeroFirstCell !== undefined ? opts.zeroFirstCell : true;
-		this.spaces = opts && opts.spaces !== undefined ? opts.spaces : true;
-		this.returnType = (opts && opts.returnType) || "emoji";
+    this.rows = opts?.rows || 9;
+    this.columns = opts?.columns || 9;
+    this.mines = opts?.mines || 10;
+    this.emote = opts?.emote || 'boom';
+    this.revealFirstCell = opts?.revealFirstCell ?? false;
+    this.zeroFirstCell = opts?.zeroFirstCell ?? true;
+    this.spaces = opts?.spaces ?? true;
+    this.returnType = opts?.returnType || 'emoji';
 
 		this.matrix = [];
 
@@ -116,6 +126,9 @@ export class Minesweeper {
 			mine: this.spoilerize(this.emote),
 			numbers: ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight"].map((n) => this.spoilerize(n))
 		};
+
+		this.rng = opts?.rng ?? Math.random;
+
 	}
 
 	/**
@@ -141,8 +154,8 @@ export class Minesweeper {
 	 */
 	public plantMines() {
 		for (let i = 0; i < this.mines; i++) {
-			const x = Math.floor(Math.random() * this.rows);
-			const y = Math.floor(Math.random() * this.columns);
+			const x = Math.floor(this.rng() * this.rows);
+			const y = Math.floor(this.rng() * this.columns);
 
 			if (this.matrix[x][y] === this.types.mine) {
 				i--;
@@ -225,7 +238,7 @@ export class Minesweeper {
 
 		const zeroCells = this.safeCells.filter((c) => this.matrix[c.x][c.y] === this.types.numbers[0]);
 		if (this.zeroFirstCell && zeroCells.length > 0) {
-			const safeCell = zeroCells[Math.floor(Math.random() * zeroCells.length)];
+			const safeCell = zeroCells[Math.floor(this.rng() * zeroCells.length)];
 
 			const x = safeCell.x;
 			const y = safeCell.y;
@@ -237,7 +250,7 @@ export class Minesweeper {
 
 			return { x, y };
 		} else {
-			const safeCell = this.safeCells[Math.floor(Math.random() * this.safeCells.length)];
+			const safeCell = this.safeCells[Math.floor(this.rng() * this.safeCells.length)];
 
 			const x = safeCell.x;
 			const y = safeCell.y;
