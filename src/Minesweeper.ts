@@ -51,7 +51,6 @@ export interface MinesweeperOpts {
 	 */
 	rng?: () => number;
 
-
 	/**
 	 * The type of the returned data.
 	 * @default "emoji"
@@ -111,14 +110,14 @@ export class Minesweeper {
 	 * @param opts - The options of the Minesweeper class.
 	 */
 	public constructor(opts: MinesweeperOpts | undefined = undefined) {
-    this.rows = opts?.rows || 9;
-    this.columns = opts?.columns || 9;
-    this.mines = opts?.mines || 10;
-    this.emote = opts?.emote || 'boom';
-    this.revealFirstCell = opts?.revealFirstCell ?? false;
-    this.zeroFirstCell = opts?.zeroFirstCell ?? true;
-    this.spaces = opts?.spaces ?? true;
-    this.returnType = opts?.returnType || 'emoji';
+		this.rows = opts?.rows || 9;
+		this.columns = opts?.columns || 9;
+		this.mines = opts?.mines || 10;
+		this.emote = opts?.emote || "boom";
+		this.revealFirstCell = opts?.revealFirstCell ?? false;
+		this.zeroFirstCell = opts?.zeroFirstCell ?? true;
+		this.spaces = opts?.spaces ?? true;
+		this.returnType = opts?.returnType || "emoji";
 
 		this.matrix = [];
 
@@ -128,7 +127,6 @@ export class Minesweeper {
 		};
 
 		this.rng = opts?.rng ?? Math.random;
-
 	}
 
 	/**

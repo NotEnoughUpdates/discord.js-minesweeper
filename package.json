@@ -1,30 +1,32 @@
 {
-	"name": "@notenoughupdates/discord.js-minesweeper",
-	"version": "1.1.0",
+	"name": "@tanzanite/discord.js-minesweeper",
+	"version": "1.2.0",
 	"description": "Generate Minesweeper mine fields using Discord's spoiler tags.",
-	"main": "./dist/Minesweeper.js",
-	"types": "./dist/Minesweeper.d.ts",
-	"repository": "jozsefsallai/discord.js-minesweeper",
-	"bugs": "https://github.com/jozsefsallai/discord.js-minesweeper/issues",
+	"main": "./dist/src/Minesweeper.js",
+	"types": "./dist/src/Minesweeper.d.ts",
+	"type": "module",
+	"repository": "https://github.com/TanzaniteBot/discord.js-minesweeper",
+	"bugs": "https://github.com/TanzaniteBot/discord.js-minesweeper/issues",
 	"author": "József Sallai @jozsefsallai",
 	"license": "MIT",
 	"devDependencies": {
-		"@types/node": "^17.0.14",
-		"@typescript-eslint/eslint-plugin": "^5.10.2",
-		"@typescript-eslint/parser": "^5.10.2",
-		"eslint": "^8.8.0",
-		"prettier": "^2.5.1",
-		"rimraf": "^3.0.2",
-		"typescript": "^4.5.5"
+		"@types/node": "^18.7.18",
+		"@types/seedrandom": "^3.0.2",
+		"@typescript-eslint/eslint-plugin": "^5.38.0",
+		"@typescript-eslint/parser": "^5.38.0",
+		"eslint": "^8.23.1",
+		"prettier": "^2.7.1",
+		"seedrandom": "^3.0.5",
+		"typescript": "^4.8.3"
 	},
 	"engines": {
 		"node": ">=16.0.0"
 	},
 	"files": [
-		"/dist",
+		"/dist/src",
 		"/src"
 	],
-	"homepage": "https://github.com/jozsefsallai/discord.js-minesweeper",
+	"homepage": "https://github.com/TanzaniteBot/discord.js-minesweeper",
 	"keywords": [
 		"discord",
 		"discord.js",
@@ -34,16 +36,12 @@
 		"generator"
 	],
 	"scripts": {
-		"lint": "tslint --project .",
-		"prepack": "yarn rimraf lib && yarn tsc",
-		"prepare": "yarn rimraf lib && yarn tsc",
+		"lint": "yarn eslint src test",
+		"test": "node ./dist/test/index.test.js",
+		"prepack": "yarn build",
+		"prepare": "yarn build",
 		"format": "yarn prettier . --write",
-		"build": "yarn rimraf dist && yarn tsc"
+		"build": "rm -r dist && yarn tsc"
 	},
-	"prettier": {
-		"useTabs": true,
-		"trailingComma": "none",
-		"arrowParens": "always",
-		"printWidth": 120
-	}
+	"packageManager": "yarn@3.2.3"
 }
